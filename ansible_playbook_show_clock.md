@@ -17,12 +17,18 @@ all:
   children:
     cisco:
       hosts:
-        10.76.56.132:
+        192.168.1.10:  # Replace with your Cisco device IP address
       vars:
         ansible_connection: network_cli
         ansible_network_os: cisco.ios.ios
-        ansible_user: formanesf-adm
+        ansible_user: your_username  # Replace with your actual username
 ```
+
+> **Note:**
+>
+> - Replace `192.168.1.10` with the actual IP address of your Cisco device.
+> - Replace `your_username` with the username used to SSH into the device.
+> - When running the playbook, Ansible will prompt for the password because the `-k` option is used.
 
 ## Playbook File
 
@@ -68,10 +74,10 @@ ansible-playbook -i inventory.yml show_clock.yml -k
 PLAY [Show clock on Cisco devices] ********************************
 
 TASK [Run show clock] *********************************************
-ok: [10.76.56.132]
+ok: [192.168.1.10]
 
 TASK [Display output] *********************************************
-ok: [10.76.56.132] => {
+ok: [192.168.1.10] => {
     "show_clock_output.stdout_lines": [
         [
             "*10:15:32.123 UTC Mon Aug 18 2026"
@@ -80,7 +86,7 @@ ok: [10.76.56.132] => {
 }
 
 PLAY RECAP *******************************************************
-10.76.56.132 : ok=2 changed=0 unreachable=0 failed=0
+192.168.1.10 : ok=2 changed=0 unreachable=0 failed=0
 ```
 
 ## Benefits of Using a Playbook
