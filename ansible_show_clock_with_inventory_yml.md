@@ -29,7 +29,6 @@ Example:
 ```text
 ansible-lab/
 ├── inventory.yml
-└── ansible_show_clock.md
 ```
 
 From that directory, run:
