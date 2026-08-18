@@ -5,7 +5,7 @@ This ad hoc Ansible command connects to a Cisco IOS device and executes the `sho
 ## Command
 
 ```bash
-ansible all -i "192.168.1.10," -m cisco.ios.ios_command -a "commands='show ip int brief'" -u <username> -k -c network_cli -e "ansible_network_os=cisco.ios.ios"
+ANSIBLE_HOST_KEY_CHECKING=False ansible all -i "192.168.1.10," -m cisco.ios.ios_command -a "commands='show ip int brief'" -u <username> -k -c network_cli -e "ansible_network_os=cisco.ios.ios"
 ```
 
 ## Parameters
