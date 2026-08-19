@@ -2,11 +2,29 @@
 
 ## Quick Checks
 
+### Show Ansible Version
+
 ```bash
 ansible --version
+```
+
+Displays the installed Ansible version, Python version, configuration file in use, module search paths, collection locations, and executable location.
+
+### Show Active Configuration
+
+```bash
 ansible-config dump
+```
+
+Displays the current configuration values that Ansible is actively using after applying defaults, environment variables, and configuration files.
+
+### List Available Configuration Options
+
+```bash
 ansible-config list
 ```
+
+Displays all configurable Ansible settings along with their descriptions, default values, environment variables, and configuration file options.
 
 ---
 
@@ -18,17 +36,23 @@ ansible-config list
 ansible-inventory -i inventory.yml --list
 ```
 
+Displays the complete inventory structure.
+
 ### View inventory as a tree
 
 ```bash
 ansible-inventory -i inventory.yml --graph
 ```
 
+Displays hosts and groups in a tree format.
+
 ### Show hosts matched by a pattern
 
 ```bash
 ansible cisco -i inventory.yml --list-hosts
 ```
+
+Shows which hosts will be targeted.
 
 ---
 
@@ -40,17 +64,23 @@ ansible cisco -i inventory.yml --list-hosts
 ansible all -i inventory.yml -m ping
 ```
 
+Tests connectivity to managed hosts.
+
 ### Run a Cisco command
 
 ```bash
 ansible cisco -i inventory.yml -m cisco.ios.ios_command -a "commands='show clock'" -k
 ```
 
+Runs a Cisco IOS command.
+
 ### Gather Cisco facts
 
 ```bash
 ansible cisco -i inventory.yml -m cisco.ios.ios_facts -k
 ```
+
+Collects facts from Cisco devices.
 
 ---
 
@@ -62,11 +92,15 @@ ansible cisco -i inventory.yml -m cisco.ios.ios_facts -k
 ansible-playbook -i inventory.yml show_clock.yml -k
 ```
 
+Executes a playbook.
+
 ### Syntax check
 
 ```bash
 ansible-playbook --syntax-check -i inventory.yml show_clock.yml
 ```
+
+Validates playbook syntax without running it.
 
 ### Dry run
 
@@ -74,104 +108,12 @@ ansible-playbook --syntax-check -i inventory.yml show_clock.yml
 ansible-playbook --check -i inventory.yml show_clock.yml
 ```
 
+Shows what changes would occur without making them.
+
 ### Verbose troubleshooting
 
 ```bash
 ansible-playbook -i inventory.yml show_clock.yml -vvv
 ```
 
----
-
-## Collection Commands
-
-### List installed collections
-
-```bash
-ansible-galaxy collection list
-```
-
-### Verify a collection
-
-```bash
-ansible-galaxy collection list cisco.ios
-```
-
-### Install a collection
-
-```bash
-ansible-galaxy collection install cisco.ios
-```
-
-### Upgrade a collection
-
-```bash
-ansible-galaxy collection install cisco.ios --force
-```
-
----
-
-## Documentation Commands
-
-### List all modules
-
-```bash
-ansible-doc -l
-```
-
-### List Cisco IOS modules
-
-```bash
-ansible-doc -l | grep '^cisco\.ios'
-```
-
-### Module documentation
-
-```bash
-ansible-doc cisco.ios.ios_command
-```
-
----
-
-## Plugin Discovery
-
-### Inventory plugins
-
-```bash
-ansible-doc -t inventory -l
-```
-
-### Connection plugins
-
-```bash
-ansible-doc -t connection -l
-```
-
-### Callback plugins
-
-```bash
-ansible-doc -t callback -l
-```
-
----
-
-## Collection Paths
-
-```bash
-ansible-config dump | grep COLLECTIONS_PATHS
-```
-
----
-
-## Daily-Use Commands
-
-```bash
-ansible --version
-ansible-inventory -i inventory.yml --graph
-ansible-inventory -i inventory.yml --list
-ansible-galaxy collection list
-ansible-doc -l | grep '^cisco\.ios'
-ansible-doc cisco.ios.ios_command
-ansible-playbook --syntax-check -i inventory.yml show_clock.yml
-ansible-playbook -i inventory.yml show_clock.yml -k
-ansible-playbook -i inventory.yml show_clock.yml -vvv
-```
+Displays detailed troubleshooting output.
