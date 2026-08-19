@@ -49,7 +49,7 @@ all:
 
     - name: Display output
       debug:
-        var: show_clock_output.stdout_lines
+        msg: "{{ show_clock_output.stdout[0] }}"
 ```
 
 ## Prerequisites
