@@ -8,6 +8,38 @@ This guide demonstrates how to convert an Ansible ad hoc command into a reusable
 ansible cisco -i inventory.yml -m cisco.ios.ios_command -a "commands='show clock'" -k
 ```
 
+## Ansible Playbook Command Syntax
+
+```bash
+ansible-playbook -i <inventory> <playbook.yml> [options]
+```
+
+Example:
+
+```bash
+ansible-playbook -i inventory.yml show_clock.yml -k
+```
+
+Where:
+
+- `<inventory>` - Inventory file containing the target hosts and connection variables.
+- `<playbook.yml>` - The playbook file to execute.
+- `[options]` - Optional parameters such as `-k`, `-u`, `-e`, and `-v`.
+
+Unlike the `ansible` ad hoc command, `ansible-playbook` does not use a host pattern on the command line. The target hosts are defined inside the playbook using the `hosts:` parameter.
+
+Example:
+
+```yaml
+- name: Show clock on Cisco devices
+  hosts: cisco
+```
+
+In this example:
+
+- `inventory.yml` tells Ansible where the hosts are located.
+- `hosts: cisco` tells Ansible which hosts or group from the inventory should run the playbook.
+
 ## Inventory File
 
 **inventory.yml**
