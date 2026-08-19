@@ -8,6 +8,26 @@ This ad hoc Ansible command connects to a Cisco IOS device and executes the `sho
 ANSIBLE_HOST_KEY_CHECKING=False ansible all -i "192.168.1.10," -m cisco.ios.ios_command -a "commands='show ip int brief'" -u <username> -k -c network_cli -e "ansible_network_os=cisco.ios.ios"
 ```
 
+## Ansible Ad Hoc Command Syntax
+
+```bash
+ansible <host-pattern> -i <inventory> -m <module> -a "<module-arguments>" [options]
+```
+
+Example:
+
+```bash
+ansible all -i "192.168.1.10," -m cisco.ios.ios_command -a "commands='show ip int brief'" -u <username> -k -c network_cli -e "ansible_network_os=cisco.ios.ios"
+```
+
+Where:
+
+- `<host-pattern>` - Host, group, or pattern to target (for example: `all`, `cisco`, `routers`).
+- `<inventory>` - Inventory file or inline inventory.
+- `<module>` - Ansible module to execute.
+- `<module-arguments>` - Arguments passed to the module.
+- `[options]` - Optional parameters such as `-u`, `-k`, `-c`, and `-e`.
+
 ## Parameters
 
 - `ANSIBLE_HOST_KEY_CHECKING=False` - Temporarily disables SSH host key verification for this command. This prevents Ansible from prompting to trust a device's SSH fingerprint the first time it connects. Useful for labs and testing environments.
