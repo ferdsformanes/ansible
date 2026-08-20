@@ -16,6 +16,8 @@ all:
         ansible_connection: network_cli
         ansible_network_os: cisco.ios.ios
         ansible_user: your_username   # Replace with your actual username
+        ansible_connect_timeout: 60
+        ansible_command_timeout: 60
 ```
 
 > **Note:** Replace `192.168.1.10` with the actual IP address of your Cisco device and replace `your_username` with your login username.
