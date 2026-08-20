@@ -1,4 +1,4 @@
-# VS Code WSL and ansible.cfg Setup Guide
+# VS Code WSL and ansible.cfg Quick Guide
 
 ## 1. Connect VS Code to WSL
 
